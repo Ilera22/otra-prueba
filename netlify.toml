@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+    timeout = 1800 # Esto aumenta el tiempo límite a 30 minutos (1800 segundos)
+
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Content-Type = "text/html; charset=utf-8"
+
+[[headers]]
+  for = "/_nuxt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
